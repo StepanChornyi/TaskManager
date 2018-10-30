@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "vesion": "1.0.0",
+  "author": "Stepan Chornyi <stepanchornyi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.1",
+    "cross-env": "^5.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.3.6"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "cross-env PORT=3000 node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "description": ""
+}
