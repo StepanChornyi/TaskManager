@@ -1,0 +1,23 @@
+	body{
+	   background-image: url(/images/background.jpg);
+	   background-position: center;
+	   background-attachment: fixed;
+	   background-size: cover;
+   	}
+   	.form-background{
+	   background-color: rgba(241, 239, 239, 0.92);
+   	}
+   	#editDesc::-webkit-input-placeholder {
+	   color: rgba(222, 222, 222, 0.99);
+   	}
+   	#editDesc{
+	   background-color: rgba(99, 99, 99, 0.92);
+	   color: rgba(242, 242, 242, 1);
+   	}
+   	#email{
+	   background-color: rgba(222, 222, 222, 0.8);
+   	}
+   	#taskText{
+	   background-color: rgba(77, 77, 77, 0.95);
+	   color: rgba(242, 242, 242, 1);
+   	}

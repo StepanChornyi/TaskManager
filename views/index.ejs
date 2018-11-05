@@ -1,176 +1,78 @@
-<% include layout/header.ejs %>
-    <div class="container-fluid px-0">
-		<div class="row justify-content-md-center m-0">
-			<div class="col-4 p-3 mt-3 rounded form-background">
-		        <div class="row mx-0" id="signinBlock">
-		            <div class="col px-0">
-						<form  method="post" id="signinForm" action="/signin">
-						  <div class="form-group">
-						    <label for="email" class="transText">Email</label>
-						    <input type="email" class="form-control" name="email" id="signinEmail">
-							<div class="valid-feedback">
-						        Looks good!
-						     </div>
-							 <div class="invalid-feedback">
-					            Wrong email!
-					         </div>
-						  </div>
-						  <div class="form-group">
-						    <label for="password" class="transText">Password</label>
-						    <input type="password" class="form-control" name="password" id="signinPassword">
-							<div class="valid-feedback" id="signinPasswordValid">
-						        Looks good!
-						     </div>
-							 <div class="invalid-feedback">
-							   Wrong password!
-							</div>
-						  </div>
-						</form>
-						<button type="button" class="btn btn-secondary shadow-sm float-left" onclick="switchToSignUp()">Sign up</button>
-						<button type="button" class="btn btn-success shadow-sm float-right" onclick="signin()">Sign in</button>
-		            </div>
-		        </div>
-				<div class="row mx-0" id="signupBlock" style="display:none;">
-		            <div class="col px-0">
-						<form  method="post" id="signupForm" action="/signup">
-						  <div class="form-group">
-						    <label for="email" class="transText">Email</label>
-						    <input type="email" class="form-control" name="email" id="signupEmail">
-							<div class="valid-feedback">
-						        Looks good!
-						     </div>
-							 <div class="invalid-feedback">
-					            Bad email. An example of a good email: 'email@mail.com'
-					         </div>
-						  </div>
-						  <div class="form-group">
-							    <label for="password" class="transText">Password</label>
-							    <input type="password" class="form-control" name="password" aria-describedby="passwordHelpBlock" id="signupPassword">
-								<small id="passwordHelpBlock" class="form-text text-muted">
-								  	Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or special characters.
-								</small>
-								<div class="valid-feedback">
-							        Good password!
-							     </div>
-								 <div class="invalid-feedback">
-						            Bad password!
-						         </div>
-						  </div>
-						  <div class="form-group">
-						    <label for="repeatPassword" class="transText">Repeat password</label>
-						    <input type="password" class="form-control" name="repeatPassword" id="signupRepeatPassword">
-							<div class="valid-feedback">
-						        Passwords coincide!
-						     </div>
-							 <div class="invalid-feedback">
-					            Passwords do not coincide!
-					         </div>
-						  </div>
-						</form>
-						<button type="button" class="btn btn-secondary shadow-sm float-left" onclick="switchToSignIn()">Sign in</button>
-						<button type="button" class="btn btn-primary shadow-sm float-right" onclick="signup()">Sign up</button>
-		            </div>
-		        </div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Task Manager</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/tasks.css">
+	</head>
+	<body>
+		<div class="container-fluid px-0">
+				<div class="row justify-content-md-center m-0">
+					<div class="col-4 p-3 mt-3 rounded form-background">
+				        <div class="row mx-0" id="signinBlock">
+				            <div class="col px-0">
+								<form  method="post" id="signinForm" action="/signin">
+								  <div class="form-group">
+								    <label for="email" class="transText">Email</label>
+								    <input type="email" class="form-control" name="email" id="signinEmail">
+									<div class="valid-feedback"></div>
+									 <div class="invalid-feedback" id="signinEmailInvalid">
+							            Wrong email!
+							         </div>
+								  </div>
+								  <div class="form-group">
+								    <label for="password" class="transText">Password</label>
+								    <input type="password" class="form-control" name="password" id="signinPassword">
+									<div class="valid-feedback" id="signinPasswordValid"></div>
+									 <div class="invalid-feedback" id="signinPasswordInvalid"></div>
+								  </div>
+								</form>
+								<button type="button" class="btn btn-secondary shadow-sm float-left" onclick="switchToSignUp()">Sign up</button>
+								<button type="button" class="btn btn-success shadow-sm float-right" onclick="signin()">Sign in</button>
+				            </div>
+				        </div>
+						<div class="row mx-0" id="signupBlock" style="display:none;">
+				            <div class="col px-0">
+								<form  method="post" id="signupForm" action="/signup">
+								  <div class="form-group">
+								    <label for="email" class="transText">Email</label>
+								    <input type="email" class="form-control" name="email" id="signupEmail">
+									<div class="valid-feedback"></div>
+									 <div class="invalid-feedback" id="signupEmailInvalid">
+							            Bad email. An example of a good email: 'email@mail.com'
+							         </div>
+								  </div>
+								  <div class="form-group">
+									    <label for="password" class="transText">Password</label>
+									    <input type="password" class="form-control" name="password" aria-describedby="passwordHelpBlock" id="signupPassword">
+										<div class="invalid-feedback">
+										   Bad password!
+										</div>
+										<small id="passwordHelpBlock" class="form-text text-muted">
+										  	Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces or special characters.
+										</small>
+										<div class="valid-feedback"></div>
+
+								  </div>
+								  <div class="form-group">
+								    <label for="repeatPassword" class="transText">Repeat password</label>
+								    <input type="password" class="form-control" name="repeatPassword" id="signupRepeatPassword">
+									<div class="valid-feedback"></div>
+									 <div class="invalid-feedback" id="signupRepeatPasswordInvalid">
+
+							         </div>
+								  </div>
+								</form>
+								<button type="button" class="btn btn-secondary shadow-sm float-left" onclick="switchToSignIn()">Sign in</button>
+								<button type="button" class="btn btn-primary shadow-sm float-right" onclick="signup()">Sign up</button>
+				            </div>
+				        </div>
+					</div>
+				</div>
 			</div>
-		</div>
-    </div>
-	<script>
-		function signin(){
-			let email = $('input#signinEmail').val();
-			let password = $('input#signinPassword').val();
-			let emailValid = false,
-				passwordValid =  false;
-			var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			if(reg.test(email)){
-				emailValid = true;
-			}else{
-				emailValid = false;
-			}
-			reg = /^[A-Za-z0-9_.]+$/;
-			if(password.split(" ").join("").length == 0 ||
-			   password.length < 8 ||
-			   password.length > 20 ||
-			   !reg.test(password)){
-				passwordValid = false;
-			}else{
-				passwordValid = true;
-			}
-			if(emailValid && passwordValid){
-				$('#signinForm').submit();
-			}else{
-				let emailInput = $("#signinEmail");
-				let passwordInput = $("#signinPassword");
-				validationShow(emailInput, emailValid);
-				validationShow(passwordInput, passwordValid);
-			}
-		}
-		function signup(){
-			let email = $('input#signupEmail').val();
-			let password = $('input#signupPassword').val();
-			let repeatPassword = $('input#signupRepeatPassword').val();
-			let emailValid = false,
-			    passwordValid = false,
-			    repeatPasswordValid = false;
-			var reg = /^[A-Za-z0-9_.]+$/;
-			if(password.split(" ").join("").length == 0 ||
-			   password.length < 8 ||
-			   password.length > 20 ||
-			   !reg.test(password)){
-				passwordValid = false;
-			}else{
-				passwordValid = true;
-			}
-			if(password == repeatPassword && repeatPassword.length != 0){
-				repeatPasswordValid = true;
-			}else{
-				repeatPasswordValid = false;
-			}
-			reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-			if(reg.test(email)){
-				emailValid = true;
-			}else{
-				emailValid = false;
-			}
-			if(emailValid && passwordValid && repeatPasswordValid){
-				$('#signupForm').submit();
-			}else{
-				let emailInput = $("#signupEmail");
-				let passwordInput = $("#signupPassword");
-				let repeatPasswordInput = $("#signupRepeatPassword");
-				validationShow(emailInput, emailValid);
-				validationShow(passwordInput, passwordValid);
-				validationShow(repeatPasswordInput, repeatPasswordValid);
-			}
-		}
-		function switchToSignUp(){
-			$('#signinBlock').attr('style', 'display:none;');
-			$('#signupBlock').attr('style', 'display:block;');
-			$("#signinEmail").val("");
-			$("#signinPassword").val("");
-			validationClassDelete([$("#signinEmail"), $("#signinPassword")]);
-		}
-		function switchToSignIn(){
-			$('#signupBlock').attr('style', 'display:none;');
-			$('#signinBlock').attr('style', 'display:block;');
-			$("#signupEmail").val("");
-			$("#signupPassword").val("");
-			$("#signupRepeatPassword").val("");
-			validationClassDelete([$("#signupEmail"), $("#signupPassword"), $("#signupRepeatPassword")]);
-		}
-		function validationShow(element, valid){
-			if(valid){
-				element.removeClass("is-invalid");
-				element.addClass("is-valid");
-			}else{
-				element.removeClass("is-valid");
-				element.addClass("is-invalid");
-			}
-		}
-		function validationClassDelete(elements){
-			elements.forEach(function(element) {
-				element.removeClass("is-invalid");
-				element.removeClass("is-valid");
-			});
-		}
-	</script>
-<% include layout/footer.ejs %>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<script src="/javascripts/index.js"></script>
+	</body>
+</html>
